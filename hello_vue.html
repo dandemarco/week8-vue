@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+
+    <body>
+
+        <div id="app">
+
+            <!--All the page that vue will manage will go here-->
+            <h1>Hello Vue!</h1>
+            <p>{{ message }}</p>    <!--Vue.js will replace {{ message }} with the data in the message variable in the app below-->
+            <p>{{ messageWithExclamationPoints }}</p>
+            <!--v-on is a Vue.js directive that acts like an event listener. 
+                So when this button is clicked, call the "addExclamation" method-->
+            <button v-on:click="addExclamation">Add !</button>
+            <button v-on:click="clearExclamations">Clear !</button>
+
+        </div>
+
+        <script>
+            
+            let app = Vue.createApp({
+                data() {
+                    return {
+                        message: 'hi',
+                        maxExclamationPoints: 10,
+                        exclamationPoints: 0,
+                        messageWithExclamationPoints: ''
+                    }
+                },
+                methods: {
+                    addExclamation() {
+                        if (this.exclamationPoints < this.maxExclamationPoints) {
+                            this.exclamationPoints++
+                            this.message = this.message + '!'
+                        } else {
+                            alert('No more!!!!!!!!!!!!!!!!!!!!!')
+                        }
+                    },
+                    clearExclamations() {
+                        this.message = "hi",
+                        exclamationPoints = 0
+                    }
+                },
+                computed: {
+                    //This is a "computed property"
+                    messageWithExclamationPoints() {
+                        let messageWithNewString = this.message
+                        for (let x = 0; x < this.exclamationPoints ; x++) {
+                            messageWithExclamationPoints = messageWithExclamationPoints + '!'
+                        }
+                        return messageWithExclamationPoints
+                    }
+                }
+            })
+
+            app.mount('#app')
+            
+        </script>
+
+    </body>
+</html>

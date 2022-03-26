@@ -1,0 +1,3 @@
+This error occurs when a variable is being referenced inside your Vue template that doesn't exist outside of the Vue script. It can be 
+"ignored" in the sense that this won't automatically cause your app to crash, but it will lead to a bug of some kind where an expected 
+reaction will not occur. To fix it, make sure the variable in question has a counterpart in your component script.
